@@ -16,8 +16,8 @@
   ];
 
   # dumb? yes, i'm lazy though
-  networking.networkmanager.enable = true;
-  systemd.services."NetworkManager-wait-online".enable = false;
+  networking.networkmanager.enable = lib.mkDefault true;
+  # systemd.services."NetworkManager-wait-online".enable = false;
 
   environment.systemPackages = with pkgs; [
     nh

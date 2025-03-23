@@ -9,7 +9,7 @@
       ];
     };
     disk."main" = {
-      device = "/dev/sda";
+      device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0";
       type = "disk";
       content = {
         type = "gpt";
@@ -20,7 +20,7 @@
             type = "EF02";
           };
           efi = {
-            size = "200M";
+            size = "150M";
             type = "EF00";
             content = {
               type = "filesystem";

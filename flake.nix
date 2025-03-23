@@ -46,6 +46,7 @@
                 inputs.disko.nixosModules.default
                 inputs.authentik-nix.nixosModules.default
                 inputs.sops-nix.nixosModules.default
+                inputs.nixos-mailserver.nixosModules.default
 
                 {
                   imports =
@@ -80,5 +81,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
 
     authentik-nix.url = "github:nix-community/authentik-nix";
+
+    nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
   };
 }
