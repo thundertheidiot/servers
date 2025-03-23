@@ -24,8 +24,12 @@
     btop
   ];
 
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
   # needed for vpns
   networking.firewall.checkReversePath = false;
+
+  sops.age.keyFile = "/nix/persist/sops-key.txt";
 
   security.sudo.enable = lib.mkForce false;
   security.sudo-rs = {

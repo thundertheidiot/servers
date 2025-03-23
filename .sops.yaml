@@ -2,7 +2,7 @@ keys:
  - &desk age1est4jdeu803qv6jng7vrj9x92l3xs0mr6qwv6fpt0p7tdd26xd6s84k2pq
  - &t440p age196cqwq7cfr20zhlxwdnjrtlnn4w3ay5q52wxec5pyk2ksvq3s9ms0qjzyr
  - &server age1w785k56chrrsc29jgkjzyvxfj3lx5sx56cm5fg6ldvychdga9umspddsfg
- - &vps age1q24gunsgf6tmvqlsyskk4ah5de2g83rdu5h5l8ec0hgqgvtyug7qse6lea
+ - &vps age1gcexqg5gdd28ldwxszsx6x7cq2uhttr7dtdwfv60ncvvus7lmy8ss9krsy
 creation_rules:
  - path_regex: hosts/server/secrets/[^/]+$
    key_groups:
@@ -10,10 +10,9 @@ creation_rules:
      - *desk
      - *t440p
      - *server
- - path_regex: sops/vps/secrets/[^/]+$
+ - path_regex: hosts/vps/secrets/[^/]+$
    key_groups:
    - age:
      - *desk
-     - *desk
+     - *vps
      - *t440p
-     - *server

@@ -77,7 +77,7 @@
   virtualisation.oci-containers.containers."gluetun" = {
     image = "qmcgaw/gluetun";
     environment = {
-      "FIREWALL_VPN_INPUT_PORTS" = "49948";
+      "FIREWALL_VPN_INPUT_PORTS" = "3865";
       "SERVER_COUNTRIES" = "Sweden";
       "TZ" = "Europe/Helsinki";
       "VPN_SERVICE_PROVIDER" = "airvpn";
@@ -375,7 +375,7 @@
     environment = {
       "PGID" = "1000";
       "PUID" = "1000";
-      "TORRENTING_PORT" = "49948";
+      "TORRENTING_PORT" = "3865";
       "TZ" = "Europe/Helsinki";
       "WEBUI_PORT" = "8080";
     };

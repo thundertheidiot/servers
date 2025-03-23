@@ -17,13 +17,21 @@ in {
       acceptTerms = true;
       defaults = {
         email = "perkele@saatana.xyz";
-        group = "nginx";
+        group = "acme";
         # staging environment
         # server = "https://acme-staging-v02.api.letsencrypt.org/directory";
       };
     };
 
     users.users.nginx.extraGroups = ["acme"];
+
+    security.acme.certs = listToAttrs (map (name: {
+        inherit name;
+        value = {
+          group = "acme";
+        };
+      })
+      config.server.getCerts);
 
     services.nginx.virtualHosts = listToAttrs (map (name: {
         inherit name;

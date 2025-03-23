@@ -6,29 +6,49 @@
 }: {
   imports = [
     ./acme.nix
+    ./coturn.nix
     ./disko.nix
     ./mail.nix
-    ./prosody.nix
+    ./prosody
+    ./secrets
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
   config = {
     system.stateVersion = "24.11";
     time.timeZone = "Europe/Helsinki";
-    networking.hostName = "uwu";
 
-    networking = {
+    networking = let
+      interface = "ens18";
+      ipv4 = "185.243.215.32";
+      ipv6 = "2a09:cd42:f:42db";
+    in {
+      hostName = "owo";
       networkmanager.enable = false;
 
-      interfaces.ens18.ipv4.addresses = [
-        {
-          address = "185.243.215.32";
-          prefixLength = 24;
-        }
-      ];
+      # TODO these for real server
+      interfaces."${interface}" = {
+        ipv4.addresses = [
+          {
+            address = ipv4;
+            prefixLength = 24;
+          }
+        ];
+
+        ipv6.addresses = [
+          {
+            address = "${ipv6}::1";
+            prefixLength = 124;
+          }
+        ];
+      };
 
       defaultGateway = "185.243.215.1";
-      nameservers = ["1.1.1.1"];
+      defaultGateway6 = {
+        address = "${ipv6}::f";
+        inherit interface;
+      };
+      nameservers = ["1.1.1.1" "2606:4700:4700:1111"];
     };
 
     nix.gc = {
