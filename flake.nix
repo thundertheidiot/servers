@@ -22,12 +22,20 @@
     formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     deploy.nodes = {
-      uwu = {
+      server = {
         hostname = "192.168.101.101";
         profiles.system = {
           user = "root";
           sshUser = "root";
           path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.server;
+        };
+      };
+      vps = {
+        hostname = "saatana.xyz";
+        profiles.system = {
+          user = "root";
+          sshUser = "root";
+          path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.vps;
         };
       };
     };
@@ -49,6 +57,15 @@
                 inputs.nixos-mailserver.nixosModules.default
 
                 {
+                  nixpkgs.overlays = [
+                    (final: prev: {
+                      "2411" = import inputs.nixpkgs-24-11 {
+                        system = final.system;
+                        config.allowUnfree = final.config.allowUnfree;
+                      };
+                    })
+                  ];
+
                   imports =
                     (import ./modules)
                     ++ (let
@@ -71,6 +88,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-24-11.url = "github:NixOS/nixpkgs/nixos-24.11";
     deploy-rs.url = "github:serokell/deploy-rs";
 
     meowos.url = "github:thundertheidiot/nixdots";

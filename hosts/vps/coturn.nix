@@ -12,6 +12,11 @@
       no-tcp-relay = true;
       realm = "saatana.xyz";
 
+      extraConfig = ''
+        no-multicast-peers
+        stale-nonce
+      '';
+
       cert = "/var/lib/acme/${realm}/cert.pem";
       pkey = "/var/lib/acme/${realm}/key.pem";
     };

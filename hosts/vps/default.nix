@@ -9,8 +9,10 @@
     ./coturn.nix
     ./disko.nix
     ./mail.nix
+    ./mumble.nix
     ./prosody
     ./secrets
+    ./radio
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
