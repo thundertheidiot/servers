@@ -22,6 +22,9 @@ in {
     ./dns.nix
     ./homepage.nix
     ./secrets
+
+    # local self signed certificates
+    (import ../../certs).module
   ];
 
   config = {

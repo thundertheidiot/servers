@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   config = {
     sops.secrets."authentik_env".mode = "0644";
 
@@ -8,9 +12,28 @@
       }
     ];
 
+    server.domains = [
+      "auth.local"
+    ];
+
+    services.nginx.virtualHosts."auth.local" = let
+      certs = import ../../certs;
+    in {
+      forceSSL = lib.mkForce true;
+
+      sslCertificate = certs."local.crt";
+      sslCertificateKey = config.sops.secrets.localKey.path;
+    };
+
     services.authentik = {
       enable = true;
       environmentFile = config.sops.secrets."authentik_env".path;
+
+      nginx = {
+        enable = true;
+        enableACME = false;
+        host = "auth.local";
+      };
 
       settings = {
         disable_startup_analytics = true;
