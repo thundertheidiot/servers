@@ -38,6 +38,12 @@
       settings = {
         disable_startup_analytics = true;
         avatars = "initials";
+
+        email = {
+          host = "localhost";
+          port = 25;
+          from = "noreply@local";
+        };
       };
     };
   };

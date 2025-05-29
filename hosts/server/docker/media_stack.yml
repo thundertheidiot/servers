@@ -67,10 +67,13 @@ services:
     image: lscr.io/linuxserver/firefox:latest
     network_mode: "service:gluetun"
     container_name: firefox
+    security_opt:
+      - seccomp:unconfined
     volumes:
       - /mnt/storage/torrent_stack/config/firefox:/config
     environment:
       - PASSWORD=
+    shm_size: "1gb"
     restart: unless-stopped
 
   radarr:

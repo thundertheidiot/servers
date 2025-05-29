@@ -17,6 +17,7 @@ in {
     ./authentik.nix
     ./disko.nix
     ./docker
+    ./forgejo.nix
     ./jellyfin.nix
     ./rathole.nix
     ./dns.nix

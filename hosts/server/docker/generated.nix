@@ -58,6 +58,8 @@
     log-driver = "journald";
     extraOptions = [
       "--network=container:gluetun"
+      "--security-opt=seccomp:unconfined"
+      "--shm-size=1073741824"
     ];
   };
   systemd.services."docker-firefox" = {

@@ -101,5 +101,7 @@
     authentik-nix.url = "github:nix-community/authentik-nix";
 
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
+
+    # kotiboksi.url = "git+ssh://git@gitlab.com/thundertheidiot/kotiboksi";
   };
 }

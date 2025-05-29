@@ -11,6 +11,12 @@
         format = "dotenv";
       };
 
+      forgejo_oauth_client_secret = {
+        sopsFile = ./forgejo.yaml;
+        format = "yaml";
+        key = "oauth_client_secret";
+      };
+
       rathole = {
         sopsFile = ./rathole.toml;
         format = "binary";
