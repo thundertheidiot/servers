@@ -11,16 +11,16 @@ in {
   };
 
   server.domains = [
-    "firefox.local"
-    "torrent.local"
-    "soulseek.local"
-    "radarr.local"
-    "sonarr.local"
-    "lidarr.local"
-    "bazarr.local"
-    "prowlarr.local"
-    "immich.local"
-    "homeassistant.local"
+    "firefox.home"
+    "torrent.home"
+    "soulseek.home"
+    "radarr.home"
+    "sonarr.home"
+    "lidarr.home"
+    "bazarr.home"
+    "prowlarr.home"
+    "immich.home"
+    "homeassistant.home"
   ];
 
   services.nginx.virtualHosts =
@@ -37,16 +37,16 @@ in {
         };
       };
     }) {
-      "torrent.local" = 8080;
-      "radarr.local" = 7878;
-      "sonarr.local" = 8989;
-      "lidarr.local" = 8686;
-      "bazarr.local" = 6767;
-      "prowlarr.local" = 9696;
-      "homeassistant.local" = 8123;
+      "torrent.home" = 8080;
+      "radarr.home" = 7878;
+      "sonarr.home" = 8989;
+      "lidarr.home" = 8686;
+      "bazarr.home" = 6767;
+      "prowlarr.home" = 9696;
+      "homeassistant.home" = 8123;
     }
     // {
-      "immich.local" = {
+      "immich.home" = {
         locations."/" = {
           proxyPass = "http://127.0.0.1:2283";
           recommendedProxySettings = true;
@@ -64,7 +64,7 @@ in {
         };
       };
 
-      "soulseek.local" = {
+      "soulseek.home" = {
         locations."/" = {
           proxyPass = "http://127.0.0.1:5030";
           extraConfig = ''
@@ -77,7 +77,7 @@ in {
         };
       };
 
-      "firefox.local" = {
+      "firefox.home" = {
         root = "/fake";
         locations."/" = {
           proxyPass = "http://127.0.0.1:3000/";

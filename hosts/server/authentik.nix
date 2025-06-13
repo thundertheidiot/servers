@@ -13,10 +13,10 @@
     ];
 
     server.domains = [
-      "auth.local"
+      "auth.home"
     ];
 
-    services.nginx.virtualHosts."auth.local" = let
+    services.nginx.virtualHosts."auth.home" = let
       certs = import ../../certs;
     in {
       forceSSL = lib.mkForce true;

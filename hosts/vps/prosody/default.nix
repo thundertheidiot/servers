@@ -1,5 +1,4 @@
 {
-  E
   config,
   mlib,
   lib,
@@ -65,6 +64,12 @@ in {
             http_upload_file_size_limit = "100*1024*1024";
             http_upload_file_daily_quota = "1024*1024*1024";
             http_upload_file_global_quota = "1024*1024*2048";
+
+            ssl = {
+              ciphers = "HIGH:!aNULL:!eNULL:!EXP:!SSLv2:!SSLv3";
+              options = ["no_sslv2" "no_sslv3" "no_ticket" "no_compression"];
+              protocol = "tlsv1_2+";
+            };
           };
         };
 

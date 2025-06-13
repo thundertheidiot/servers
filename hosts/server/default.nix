@@ -23,6 +23,7 @@ in {
     ./dns.nix
     ./homepage.nix
     ./secrets
+    ./redlib.nix
 
     # local self signed certificates
     (import ../../certs).module

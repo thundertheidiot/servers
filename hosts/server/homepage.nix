@@ -10,10 +10,12 @@ in {
   config = {
     server.domains = [
       "homepage.local"
+      "homepage.home"
     ];
 
     services.nginx.virtualHosts = {
       "homepage.local" = {
+        serverAliases = ["homepage.home"];
         root = "/fake";
         locations = {
           "/" = {
@@ -68,7 +70,7 @@ in {
             {
               "Jellyfin" = {
                 icon = "jellyfin.svg";
-                href = "http://jellyfin.local";
+                href = "http://jellyfin.home";
                 widget = {
                   type = "jellyfin";
                   url = "http://127.0.0.1:8096";
@@ -81,7 +83,7 @@ in {
             {
               "Immich" = {
                 icon = "immich.svg";
-                href = "http://immich.local";
+                href = "http://immich.home";
                 widget = {
                   type = "immich";
                   url = "http://127.0.0.1:2283";
@@ -97,7 +99,7 @@ in {
             {
               "Radarr" = {
                 icon = "radarr.svg";
-                href = "http://radarr.local";
+                href = "http://radarr.home";
                 widget = {
                   type = "radarr";
                   url = "http://${vpnAddress}:7878";
@@ -109,7 +111,7 @@ in {
             {
               "Sonarr" = {
                 icon = "sonarr.svg";
-                href = "http://sonarr.local";
+                href = "http://sonarr.home";
                 widget = {
                   type = "sonarr";
                   url = "http://${vpnAddress}:8989";
@@ -121,7 +123,7 @@ in {
             {
               "Lidarr" = {
                 icon = "lidarr.svg";
-                href = "http://lidarr.local";
+                href = "http://lidarr.home";
                 widget = {
                   type = "lidarr";
                   url = "http://${vpnAddress}:8686";
@@ -133,7 +135,7 @@ in {
             {
               "Bazarr" = {
                 icon = "bazarr.svg";
-                href = "http://bazarr.local";
+                href = "http://bazarr.home";
                 widget = {
                   type = "bazarr";
                   url = "http://${vpnAddress}:6767";
@@ -149,7 +151,7 @@ in {
             {
               "qBittorrent" = {
                 icon = "qbittorrent.svg";
-                href = "http://torrent.local";
+                href = "http://torrent.home";
                 widget = {
                   type = "qbittorrent";
                   url = "http://${vpnAddress}:8080";
@@ -161,7 +163,7 @@ in {
             {
               "Prowlarr" = {
                 icon = "prowlarr.svg";
-                href = "http://prowlarr.local";
+                href = "http://prowlarr.home";
                 widget = {
                   type = "prowlarr";
                   url = "http://${vpnAddress}:9696";
@@ -173,13 +175,13 @@ in {
               "Firefox" = {
                 description = "Firefox container permanently connected to a VPN";
                 icon = "firefox.svg";
-                href = "http://firefox.local";
+                href = "http://firefox.home";
               };
             }
             {
               "Soulseek" = {
                 icon = "slskd.svg";
-                href = "http://soulseek.local";
+                href = "http://soulseek.home";
               };
             }
           ];

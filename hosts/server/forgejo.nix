@@ -7,9 +7,11 @@
   config = {
     server.domains = [
       "git.local"
+      "git.home"
     ];
 
     services.nginx.virtualHosts."git.local" = {
+      serverAliases = ["git.home"];
       locations = {
         "/" = {
           proxyPass = "http://127.0.0.1:${toString config.services.forgejo.settings.server.HTTP_PORT}";
@@ -74,7 +76,7 @@
 
       settings = {
         server = {
-          ROOT_URL = "http://git.local";
+          ROOT_URL = "http://git.home";
           HTTP_PORT = 3001;
         };
 

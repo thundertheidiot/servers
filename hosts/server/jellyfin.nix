@@ -17,10 +17,12 @@
 
     server.domains = [
       "jellyfin.local"
+      "jellyfin.home"
     ];
 
     services.nginx.virtualHosts."jellyfin.local" = {
       root = "/fake";
+      serverAliases = ["jellyfin.home"];
 
       # recommendedTlsSettings = false;
       locations = {
