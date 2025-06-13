@@ -26,11 +26,11 @@
     };
 
     services.authentik = {
-      enable = true;
+      enable = false;
       environmentFile = config.sops.secrets."authentik_env".path;
 
       nginx = {
-        enable = true;
+        enable = false;
         enableACME = false;
         host = "auth.local";
       };
